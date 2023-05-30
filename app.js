@@ -12,7 +12,7 @@ const mainRouter = require('./routes/main')
 app.use(express.static('./public'));
 app.use(express.json());
 
-app.use('/',mainRouter)
+app.use('/api/v1',mainRouter)
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
