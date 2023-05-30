@@ -10,12 +10,12 @@ const authMiddleware = (req, res, next) => {
    const token = authHeader.split(' ')[1]
    console.log(token);
    try {
-      const decoded = jwt.verify(token, 'jwtsecret')
+      const decoded = jwt.verify(token, process.env.JWT)
       // console.log(decoded);
       const { username } = decoded
       req.user = username
    } catch (error) {
-      throw new CustomAPIError('invalid token', 401)
+      throw new CustomAPIError('Not authorized to access this route', 401)
    }
    next()
 }
